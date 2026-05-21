@@ -1,18 +1,19 @@
+`include "svbt_base_unit.sv"
+`include "svbt_packet.sv"
+`include "svbt_reset_bfm.sv"
+`include "svbt_data_in_generator.sv"
+`include "svbt_data_in_bfm.sv"
+`include "svbt_environment.sv"
+
 constraint svbt_packet::keep_address_fixed {address == 0;}
 constraint svbt_packet::keep_length_small {length < 10;}
 
 program test;
-    svbt_packet pkt;
+    svbt_environment env;
     
     initial begin
-        pkt = new();
-        pkt.display("Initial");
-        if(pkt.randomize()) begin
-            pkt.display("Dupa randomizare");
-        end
-        
-        if(pkt.randomize() with { address == 2'b00;}) begin
-            pkt.display("Randomizare Inline");
-        end
-    end
+       env = new(15, "Environment", 25);
+       env.run();
+       
+       end
 endprogram
