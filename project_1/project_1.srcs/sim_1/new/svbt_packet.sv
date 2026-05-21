@@ -60,12 +60,12 @@ class svbt_packet;
     
     endfunction: copy
     
-    function display(string prefix);
+    function void display(string prefix);
     
         string str, ddata ="";
         foreach(this.data[i]) begin
             str.hextoa(data[i]);
-            ddata = { ddata, "h'",str};
+            ddata = { ddata, "h' ",str};
         end
         $display("[%0t] %s : packet ID: %0d | CMD = %0d | ADDRESS = %0d | LENGTH = %0d | PAYLOAD is %s | PARITY = %0h | DELAY = %0d", $time, prefix, id, cmd, address, length, ddata, parity, delay);
     
