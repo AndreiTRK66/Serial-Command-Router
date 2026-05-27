@@ -2,12 +2,17 @@ class svbt_environment extends svbt_base_unit;
 
     int number_of_packets;
     svbt_base_unit units[$];
-    svbt_packet_channel packet_mbox, data_in_mbox;
+    svbt_packet_channel packet_mbox, data_in_mbox,data_out_mbox;
     
     svbt_data_in_generator data_in_generator;
     svbt_data_in_bfm data_in_bfm;
+    svbt_monitor_in monitor_in;
     
     svbt_reset_bfm reset_bfm;
+    
+    svbt_monitor_out monitor_out;
+    svbt_scoreboard scoreboard;
+    
     
     bit force_read_enable_deasserted;
     
@@ -29,7 +34,17 @@ class svbt_environment extends svbt_base_unit;
         data_in_bfm = new(packet_mbox, top.input_intf.drv, top.input_intf.rcv, top.reset_intf.rcv,"DATA_IN_BFM",2);
         units.push_back(data_in_bfm);
         
-    
+        data_in_mbox = new();
+        monitor_in = new(top.input_intf.rcv, top.reset_intf.rcv, data_in_mbox, "MONITOR_IN", 3);
+        units.push_back(monitor_in);
+        
+        data_out_mbox = new();
+        monitor_out = new(top.output_intf.rcv, top.reset_intf.rcv, data_out_mbox, "MONITOR_OUT",4);
+        units.push_back(monitor_out);
+        
+        scoreboard = new("SCOREBOARD", 5, data_in_mbox,data_out_mbox, top.input_intf.rcv);
+        units.push_back(scoreboard);
+        
     endfunction: new
     
     
@@ -48,7 +63,15 @@ class svbt_environment extends svbt_base_unit;
                 end
             join_none       
        end
-        #30000
+        #20000
+        scoreboard.check_empty();
+        
+        if(scoreboard.errors == 0) begin
+            $display("TEST PASSED");
+            $display(" TOTAL PACKETS: %0d", scoreboard.total_packets);
+        end else begin
+            $display("TEST FAILED  %0d ERRORS",scoreboard.errors);    
+            end
         $finish(1);
     endtask: run
 

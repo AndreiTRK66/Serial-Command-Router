@@ -50,12 +50,13 @@ class svbt_data_in_bfm extends svbt_base_unit;
             @(smp_drv.drv_cb);
         
         end
+        smp_drv.drv_cb.packet_valid <= 1'b0;
         smp_drv.drv_cb.data <= pkt.parity;
         @(smp_drv.drv_cb);
         //curatam busul
-        smp_drv.drv_cb.packet_valid <= 1'b0;
+        
         smp_drv.drv_cb.data <= 8'h00;
-        @(smp_drv.drv_cb);
+       // @(smp_drv.drv_cb);
         
     
     endtask: drive_packet

@@ -4,8 +4,11 @@
 `include "svbt_data_in_generator.sv"
 `include "svbt_data_in_bfm.sv"
 `include "svbt_environment.sv"
+`include "svbt_monitor_in.sv"
+`include "svbt_monitor_out.sv"
+`include "svbt_scoreboard.sv"
 
-constraint svbt_packet::keep_address_fixed {address == 0;}
+//constraint svbt_packet::keep_address_fixed {(cmd != 2'b11) ? address = 2'b11}
 constraint svbt_packet::keep_length_small {length < 10;}
 
 program test;

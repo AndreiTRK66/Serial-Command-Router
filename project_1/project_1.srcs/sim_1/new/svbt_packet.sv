@@ -10,7 +10,7 @@ class svbt_packet;
     rand bit [1:0] address;
     constraint keep_address1 { (cmd!=2'b11) -> address != 2'b11 ;}
     constraint keep_address2 {(address == 2'b11) -> cmd == 2'b11;}
-    constraint keep_address_fixed;
+    //constraint keep_address_fixed;
     
     rand bit [3:0] length;
     constraint keep_length { length > 0;}
@@ -21,14 +21,14 @@ class svbt_packet;
     constraint order { solve length before data;}
     constraint keep_data_size { data.size() == length;}
     constraint data_lock { (cmd == 2'b11 && address == 2'b11) ->{
-         data[length-1][7:6] inside {2'b00, 2'b01};
-         data[length-1][1:0] < 3;     
+         data[0][7:6] inside {2'b00, 2'b01};
+         data[0][1:0] < 3;     
     }}
     
     bit [7:0] parity;
     bit [7:0] header;
     rand int delay;
-    constraint keep_delay {delay inside {[1:10]};}
+    constraint keep_delay {delay inside {[15:20]};}
     
     rand packet_length pkt_length;
     constraint keep_pkt_length;
@@ -67,7 +67,7 @@ class svbt_packet;
             str.hextoa(data[i]);
             ddata = { ddata, "h' ",str};
         end
-        $display("[%0t] %s : packet ID: %0d | CMD = %0d | ADDRESS = %0d | LENGTH = %0d | PAYLOAD is %s | PARITY = %0h | DELAY = %0d", $time, prefix, id, cmd, address, length, ddata, parity, delay);
+        $display("[%0t] %s : packet ID: %0d | CMD = %0d | ADDRESS = %0d | LENGTH = %0d | PAYLOAD is %s | PARITY = %0h | DELAY = %0d ", $time, prefix, id, cmd, address, length, ddata, parity, delay);
     
     endfunction: display
     
