@@ -5,30 +5,43 @@ class svbt_packet;
     int id;
     
     rand bit [1:0] cmd;
-    constraint keep_cmd_fixed;
-    
     rand bit [1:0] address;
-    constraint keep_address1 { (cmd!=2'b11) -> address != 2'b11 ;}
-    constraint keep_address2 {(address == 2'b11) -> cmd == 2'b11;}
-    //constraint keep_address_fixed;
-    
     rand bit [3:0] length;
-    constraint keep_length { length > 0;}
-    //constraint keep_length_fixed;
-    constraint keep_length_small;
-    
     rand bit [7:0] data [$];
+     rand int delay;
+     
+    rand bit bad_parity;
+    rand bit mid_packet_drop;
+    
+    //extern constraint keep_cmd_fixed;
+    //extern constraint keep_address_fixed;
+    //extern constraint keep_length_fixed;
+    //extern constraint keep_delay;
+    //extern constraint keep_error_flags;
+    //constraint keep_address1 { (cmd!=2'b11) -> address != 2'b11 ;}
+    //constraint keep_address2 {(address == 2'b11) -> cmd == 2'b11;}
+    
+    
+    constraint keep_length { length > 0;}
     constraint order { solve length before data;}
     constraint keep_data_size { data.size() == length;}
+
+    
+    
+    //constraint keep_length_small;
+    
+ 
+  
     constraint data_lock { (cmd == 2'b11 && address == 2'b11) ->{
          data[0][7:6] inside {2'b00, 2'b01};
-         data[0][1:0] < 3;     
+         data[0][5:2] == 4'b0000;  
+         data[0][1:0] inside {0, 1, 2};
     }}
     
     bit [7:0] parity;
     bit [7:0] header;
-    rand int delay;
-    constraint keep_delay {delay inside {[15:20]};}
+   
+    //constraint keep_delay {delay inside {[15:20]};}
     
     rand packet_length pkt_length;
     constraint keep_pkt_length;
@@ -46,19 +59,24 @@ class svbt_packet;
         
     endfunction: post_randomize
     
-    function svbt_packet copy();
-        copy = new();
-        copy.id = this.id;
-        copy.cmd = this.cmd;
-        copy.address = this.address;
-        copy.length = this.length;
-        copy.data = this.data;
-        copy.parity = this.parity;
-        copy.delay = this.delay;
-        copy.pkt_length = this.pkt_length;
-        copy.header = this.header;
-    
+    virtual function svbt_packet copy();
+        svbt_packet h;
+        h = new();
+        this.copy_data(h);
+        return h;
     endfunction: copy
+    
+    function void copy_data(svbt_packet copy2);
+        copy2.id = this.id;
+        copy2.cmd = this.cmd;
+        copy2.address = this.address;
+        copy2.length = this.length;
+        copy2.data = this.data;
+        copy2.parity = this.parity;
+        copy2.delay = this.delay;
+        copy2.pkt_length = this.pkt_length;
+        copy2.header = this.header;
+    endfunction: copy_data
     
     function void display(string prefix);
     

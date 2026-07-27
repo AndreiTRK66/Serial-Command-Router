@@ -46,6 +46,10 @@ class svbt_data_in_bfm extends svbt_base_unit;
         @(smp_drv.drv_cb);
         
         for(int i = 0; i < pkt.length; i++) begin
+             if(pkt.mid_packet_drop == 1'b1 && i == (pkt.length / 2)) begin
+                smp_drv.drv_cb.packet_valid <= 1'b0;
+                break;
+             end
             smp_drv.drv_cb.data <=pkt.data[i];
             @(smp_drv.drv_cb);
         

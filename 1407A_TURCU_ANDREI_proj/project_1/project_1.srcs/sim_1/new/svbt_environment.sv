@@ -1,3 +1,4 @@
+
 class svbt_environment extends svbt_base_unit;
 
     int number_of_packets;
@@ -63,16 +64,36 @@ class svbt_environment extends svbt_base_unit;
                 end
             join_none       
        end
-        #20000
-        scoreboard.check_empty();
+       
+       test_end();
+       
+    endtask: run
+    
+    
+    task test_end();
+        $display("[%0t] [ENV] astept sa procesam %0d pachete...", $time, number_of_packets);
         
-        if(scoreboard.errors == 0) begin
+        fork
+            begin
+                wait(scoreboard.total_packets == number_of_packets);
+                #1000;
+            end
+            begin
+                #500000;
+                $display("[%0t] [ENV] ERR simularea s a blocat", $time);
+            end
+       join_any
+       disable fork;
+       
+       scoreboard.check_empty();
+       if(scoreboard.errors == 0 && scoreboard.total_packets == number_of_packets) begin
             $display("TEST PASSED");
             $display(" TOTAL PACKETS: %0d", scoreboard.total_packets);
         end else begin
             $display("TEST FAILED  %0d ERRORS",scoreboard.errors);    
             end
-        $finish(1);
-    endtask: run
+        $finish(1);         
+    
+    endtask: test_end
 
 endclass: svbt_environment
