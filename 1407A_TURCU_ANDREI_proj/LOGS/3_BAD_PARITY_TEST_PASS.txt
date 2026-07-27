@@ -1,0 +1,99 @@
+START BAD PARITY TEST
+[700000] [ENV] astept sa procesam 15 pachete...
+[700000] DATA_IN_BFM Starting to drive packets...
+[700000] DATA_IN_GENERATOR Starting to generate 15 packets...
+[700000] [GEN] : packet ID: 0 | CMD = 0 | ADDRESS = 0 | LENGTH = 2 | PAYLOAD is h' 7ah' 29 | PARITY = 51 | DELAY = 20 
+[700000] [GEN] : packet ID: 1 | CMD = 0 | ADDRESS = 1 | LENGTH = 4 | PAYLOAD is h' 94h' a1h' 2ch' 25 | PARITY = 28 | DELAY = 16 
+[700000] [GEN] : packet ID: 2 | CMD = 0 | ADDRESS = 0 | LENGTH = 3 | PAYLOAD is h' 29h' eh' 3d | PARITY = 19 | DELAY = 17 
+[700000] [GEN] : packet ID: 3 | CMD = 0 | ADDRESS = 1 | LENGTH = 4 | PAYLOAD is h' c8h' a2h' 89h' 16 | PARITY = e1 | DELAY = 16 
+[700000] [GEN] : packet ID: 4 | CMD = 0 | ADDRESS = 1 | LENGTH = 3 | PAYLOAD is h' 3dh' 58h' 49 | PARITY = 3f | DELAY = 16 
+[700000] [GEN] : packet ID: 5 | CMD = 0 | ADDRESS = 1 | LENGTH = 2 | PAYLOAD is h' a3h' a4 | PARITY = 15 | DELAY = 15 
+[700000] [GEN] : packet ID: 6 | CMD = 0 | ADDRESS = 0 | LENGTH = 2 | PAYLOAD is h' c8h' 13 | PARITY = d9 | DELAY = 18 
+[700000] [GEN] : packet ID: 7 | CMD = 0 | ADDRESS = 1 | LENGTH = 3 | PAYLOAD is h' d3h' 18h' 5 | PARITY = dd | DELAY = 17 
+[700000] [GEN] : packet ID: 8 | CMD = 0 | ADDRESS = 1 | LENGTH = 4 | PAYLOAD is h' 46h' dh' 4ah' cb | PARITY = de | DELAY = 20 
+[700000] [GEN] : packet ID: 9 | CMD = 0 | ADDRESS = 0 | LENGTH = 3 | PAYLOAD is h' ch' b8h' 45 | PARITY = f2 | DELAY = 19 
+[700000] [GEN] : packet ID: 10 | CMD = 0 | ADDRESS = 1 | LENGTH = 4 | PAYLOAD is h' 33h' 7ch' ach' 3b | PARITY = cc | DELAY = 16 
+[700000] [GEN] : packet ID: 11 | CMD = 0 | ADDRESS = 0 | LENGTH = 2 | PAYLOAD is h' eh' 8a | PARITY = 86 | DELAY = 20 
+[700000] [GEN] : packet ID: 12 | CMD = 0 | ADDRESS = 1 | LENGTH = 3 | PAYLOAD is h' 53h' 10h' a6 | PARITY = f6 | DELAY = 16 
+[700000] [GEN] : packet ID: 13 | CMD = 0 | ADDRESS = 0 | LENGTH = 2 | PAYLOAD is h' 28h' b9 | PARITY = 93 | DELAY = 18 
+[700000] [GEN] : packet ID: 14 | CMD = 0 | ADDRESS = 1 | LENGTH = 3 | PAYLOAD is h' 5eh' cbh' 2b | PARITY = ad | DELAY = 16 
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'top_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+run all
+[3050000] DATA_IN_MONITOR : packet ID: 0 | CMD = 0 | ADDRESS = 0 | LENGTH = 2 | PAYLOAD is h' 7ah' 29 | PARITY = 51 | DELAY = 0 
+[3350000] BUS: Selectez Slave 0 (OP=000)
+[3550000] BUS: Slave-ul a raspuns cu ACK
+[3950000] MONITOR_OUT : packet ID: 0 | CMD = 0 | ADDRESS = 0 | LENGTH = 1 | PAYLOAD is h' 0 | PARITY = 0 | DELAY = 0 
+[3950000] [SCOREBOARD] CMD WRITE: Am calculat XOR 53 si am scris in slaveul 0
+[5250000] DATA_IN_MONITOR : packet ID: 1 | CMD = 0 | ADDRESS = 1 | LENGTH = 4 | PAYLOAD is h' 94h' a1h' 2ch' 25 | PARITY = 28 | DELAY = 0 
+[5550000] BUS: Selectez Slave 1 (OP=000)
+[5750000] BUS: Slave-ul a raspuns cu ACK
+[6150000] MONITOR_OUT : packet ID: 1 | CMD = 0 | ADDRESS = 0 | LENGTH = 1 | PAYLOAD is h' 0 | PARITY = 0 | DELAY = 0 
+[6150000] [SCOREBOARD] CMD WRITE: Am calculat XOR 3c si am scris in slaveul 1
+[7450000] DATA_IN_MONITOR : packet ID: 2 | CMD = 0 | ADDRESS = 0 | LENGTH = 3 | PAYLOAD is h' 29h' eh' 3d | PARITY = 19 | DELAY = 0 
+[7750000] BUS: Selectez Slave 0 (OP=000)
+[7950000] BUS: Slave-ul a raspuns cu ACK
+[8350000] MONITOR_OUT : packet ID: 2 | CMD = 0 | ADDRESS = 0 | LENGTH = 1 | PAYLOAD is h' 0 | PARITY = 0 | DELAY = 0 
+[8350000] [SCOREBOARD] CMD WRITE: Am calculat XOR 1a si am scris in slaveul 0
+[9650000] DATA_IN_MONITOR : packet ID: 3 | CMD = 0 | ADDRESS = 1 | LENGTH = 4 | PAYLOAD is h' c8h' a2h' 89h' 16 | PARITY = e1 | DELAY = 0 
+[9950000] BUS: Selectez Slave 1 (OP=000)
+[10150000] BUS: Slave-ul a raspuns cu ACK
+[10550000] MONITOR_OUT : packet ID: 3 | CMD = 0 | ADDRESS = 0 | LENGTH = 1 | PAYLOAD is h' 0 | PARITY = 0 | DELAY = 0 
+[10550000] [SCOREBOARD] CMD WRITE: Am calculat XOR f5 si am scris in slaveul 1
+[11750000] DATA_IN_MONITOR : packet ID: 4 | CMD = 0 | ADDRESS = 1 | LENGTH = 3 | PAYLOAD is h' 3dh' 58h' 49 | PARITY = 3f | DELAY = 0 
+[12050000] BUS: Selectez Slave 1 (OP=000)
+[12250000] BUS: Slave-ul a raspuns cu ACK
+[12650000] MONITOR_OUT : packet ID: 4 | CMD = 0 | ADDRESS = 0 | LENGTH = 1 | PAYLOAD is h' 0 | PARITY = 0 | DELAY = 0 
+[12650000] [SCOREBOARD] CMD WRITE: Am calculat XOR 2c si am scris in slaveul 1
+[13650000] DATA_IN_MONITOR : packet ID: 5 | CMD = 0 | ADDRESS = 1 | LENGTH = 2 | PAYLOAD is h' a3h' a4 | PARITY = 15 | DELAY = 0 
+[13950000] BUS: Selectez Slave 1 (OP=000)
+[14150000] BUS: Slave-ul a raspuns cu ACK
+[14550000] MONITOR_OUT : packet ID: 5 | CMD = 0 | ADDRESS = 0 | LENGTH = 1 | PAYLOAD is h' 0 | PARITY = 0 | DELAY = 0 
+[14550000] [SCOREBOARD] CMD WRITE: Am calculat XOR 7 si am scris in slaveul 1
+[15850000] DATA_IN_MONITOR : packet ID: 6 | CMD = 0 | ADDRESS = 0 | LENGTH = 2 | PAYLOAD is h' c8h' 13 | PARITY = d9 | DELAY = 0 
+[16150000] BUS: Selectez Slave 0 (OP=000)
+[16350000] BUS: Slave-ul a raspuns cu ACK
+[16750000] MONITOR_OUT : packet ID: 6 | CMD = 0 | ADDRESS = 0 | LENGTH = 1 | PAYLOAD is h' 0 | PARITY = 0 | DELAY = 0 
+[16750000] [SCOREBOARD] CMD WRITE: Am calculat XOR db si am scris in slaveul 0
+[18050000] DATA_IN_MONITOR : packet ID: 7 | CMD = 0 | ADDRESS = 1 | LENGTH = 3 | PAYLOAD is h' d3h' 18h' 5 | PARITY = dd | DELAY = 0 
+[18350000] BUS: Selectez Slave 1 (OP=000)
+[18550000] BUS: Slave-ul a raspuns cu ACK
+[18950000] MONITOR_OUT : packet ID: 7 | CMD = 0 | ADDRESS = 0 | LENGTH = 1 | PAYLOAD is h' 0 | PARITY = 0 | DELAY = 0 
+[18950000] [SCOREBOARD] CMD WRITE: Am calculat XOR ce si am scris in slaveul 1
+[20650000] DATA_IN_MONITOR : packet ID: 8 | CMD = 0 | ADDRESS = 1 | LENGTH = 4 | PAYLOAD is h' 46h' dh' 4ah' cb | PARITY = de | DELAY = 0 
+[20950000] BUS: Selectez Slave 1 (OP=000)
+[21150000] BUS: Slave-ul a raspuns cu ACK
+[21550000] MONITOR_OUT : packet ID: 8 | CMD = 0 | ADDRESS = 0 | LENGTH = 1 | PAYLOAD is h' 0 | PARITY = 0 | DELAY = 0 
+[21550000] [SCOREBOARD] CMD WRITE: Am calculat XOR ca si am scris in slaveul 1
+[23050000] DATA_IN_MONITOR : packet ID: 9 | CMD = 0 | ADDRESS = 0 | LENGTH = 3 | PAYLOAD is h' ch' b8h' 45 | PARITY = f2 | DELAY = 0 
+[23350000] BUS: Selectez Slave 0 (OP=000)
+[23550000] BUS: Slave-ul a raspuns cu ACK
+[23950000] MONITOR_OUT : packet ID: 9 | CMD = 0 | ADDRESS = 0 | LENGTH = 1 | PAYLOAD is h' 0 | PARITY = 0 | DELAY = 0 
+[23950000] [SCOREBOARD] CMD WRITE: Am calculat XOR f1 si am scris in slaveul 0
+[25250000] DATA_IN_MONITOR : packet ID: 10 | CMD = 0 | ADDRESS = 1 | LENGTH = 4 | PAYLOAD is h' 33h' 7ch' ach' 3b | PARITY = cc | DELAY = 0 
+[25550000] BUS: Selectez Slave 1 (OP=000)
+[25750000] BUS: Slave-ul a raspuns cu ACK
+[26150000] MONITOR_OUT : packet ID: 10 | CMD = 0 | ADDRESS = 0 | LENGTH = 1 | PAYLOAD is h' 0 | PARITY = 0 | DELAY = 0 
+[26150000] [SCOREBOARD] CMD WRITE: Am calculat XOR d8 si am scris in slaveul 1
+[27650000] DATA_IN_MONITOR : packet ID: 11 | CMD = 0 | ADDRESS = 0 | LENGTH = 2 | PAYLOAD is h' eh' 8a | PARITY = 86 | DELAY = 0 
+[27950000] BUS: Selectez Slave 0 (OP=000)
+[28150000] BUS: Slave-ul a raspuns cu ACK
+[28550000] MONITOR_OUT : packet ID: 11 | CMD = 0 | ADDRESS = 0 | LENGTH = 1 | PAYLOAD is h' 0 | PARITY = 0 | DELAY = 0 
+[28550000] [SCOREBOARD] CMD WRITE: Am calculat XOR 84 si am scris in slaveul 0
+[29750000] DATA_IN_MONITOR : packet ID: 12 | CMD = 0 | ADDRESS = 1 | LENGTH = 3 | PAYLOAD is h' 53h' 10h' a6 | PARITY = f6 | DELAY = 0 
+[30050000] BUS: Selectez Slave 1 (OP=000)
+[30250000] BUS: Slave-ul a raspuns cu ACK
+[30650000] MONITOR_OUT : packet ID: 12 | CMD = 0 | ADDRESS = 0 | LENGTH = 1 | PAYLOAD is h' 0 | PARITY = 0 | DELAY = 0 
+[30650000] [SCOREBOARD] CMD WRITE: Am calculat XOR e5 si am scris in slaveul 1
+[31950000] DATA_IN_MONITOR : packet ID: 13 | CMD = 0 | ADDRESS = 0 | LENGTH = 2 | PAYLOAD is h' 28h' b9 | PARITY = 93 | DELAY = 0 
+[32250000] BUS: Selectez Slave 0 (OP=000)
+[32450000] BUS: Slave-ul a raspuns cu ACK
+[32850000] MONITOR_OUT : packet ID: 13 | CMD = 0 | ADDRESS = 0 | LENGTH = 1 | PAYLOAD is h' 0 | PARITY = 0 | DELAY = 0 
+[32850000] [SCOREBOARD] CMD WRITE: Am calculat XOR 91 si am scris in slaveul 0
+[34050000] DATA_IN_MONITOR : packet ID: 14 | CMD = 0 | ADDRESS = 1 | LENGTH = 3 | PAYLOAD is h' 5eh' cbh' 2b | PARITY = ad | DELAY = 0 
+[34350000] BUS: Selectez Slave 1 (OP=000)
+[34550000] BUS: Slave-ul a raspuns cu ACK
+[34950000] MONITOR_OUT : packet ID: 14 | CMD = 0 | ADDRESS = 0 | LENGTH = 1 | PAYLOAD is h' 0 | PARITY = 0 | DELAY = 0 
+[34950000] [SCOREBOARD] CMD WRITE: Am calculat XOR be si am scris in slaveul 1
+TEST PASSED
+ TOTAL PACKETS: 15
